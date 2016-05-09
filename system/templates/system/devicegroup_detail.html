@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load staticfiles %}
+
+<h1>{{ device_group.name }} <small>Device Group</small></h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<div class="panel panel-default">
+	<div class="panel-heading" data-toggle="collapse" href="#device_group-properties-panel-body" aria-expanded="false" aria-controls="device_group-properties-panel-body">
+		<h3 class="panel-title">Properties</h3>
+	</div>
+	<div class="panel-collapse collapse in" id="device_group-properties-panel-body">
+		<div class="panel-body">
+			<dl class="dl-horizontal">
+				<dt>Name:</dt>
+				<dd>{{ device_group.name }}</dd>
+				<dt>Classification:</dt>
+				<dd>{{ device_group.classification }}</dd>
+			</dl>
+			{% if device_count > 0 %}
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Devices</h3>
+				</div>
+				<table class="table table-striped table-hover table-condensed">
+					<tr>
+						<th>&nbsp;</th>
+						<th>Name</th>
+						<th>Connection</th>
+						<th>Version</th>
+					</tr>
+					{% for device in device_list %}
+					<tr>
+						<td class="text-right" width="1%"><img src="{% static "images/"|add:device.status|add:".gif" %}" /></td>
+						<td><a href="{% url 'system:device_detail' device.id %}">{{ device.name }}</a></td>
+						<td>{{ device.connection }}</td>
+						<td>{{ device.version }}</td>
+					</tr>
+					{% endfor %}
+				</table>
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock content %}

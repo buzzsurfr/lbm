@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{% load staticfiles %}
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Load Balancing Object Viewer</title>
+		{% bootstrap_css %}
+		<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+		{% bootstrap_javascript jquery=1 %}
+		<script src="{% static 'scripts/table-row-clickable.js' %}"></script>
+		<script src="{% static 'scripts/tooltips.js' %}"></script>
+	</head>
+	
+	<body>
+		{% include 'navbar.html' %}
+		<div class="container" id="alerts">
+		{% for message in alerts %}
+		{% bootstrap_alert message.content alert_type=message.alert_type dismissable=True %}
+		{% endfor %}
+		</div>
+		<div class="container">
+		{% block content %}{% endblock content %}
+		</div>
+		{#<pre>{% filter force_escape %}{% debug %}{% endfilter %}</pre>#}
+	</body>
+</html>
+

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% block content %}
+{% load staticfiles %}
+<script src="{% static 'scripts/system-device-test.js' %}"></script>
+
+<h1>{{ device.name }} <small>Device</small></h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<div class="panel panel-default">
+	<div class="panel-heading" data-toggle="collapse" href="#device-properties-panel-body" aria-expanded="false" aria-controls="device-properties-panel-body">
+		<h3 class="panel-title">Properties</h3>
+	</div>
+	<div class="panel-collapse collapse in" id="device-properties-panel-body">
+		<div class="panel-body">
+			<dl class="dl-horizontal">
+				<dt>Name:</dt>
+				<dd>{{ device.name }}</dd>
+				<dt>Classification:</dt>
+				<dd>{{ device.classification }}</dd>
+				<dt>Connection:</dt>
+				<dd>{{ device.connection }}</dd>
+				<dt>Version:</dt>
+				<dd>{{ device.version }}</dd>
+				<dt>Status:</dt>
+				<dd><img src="{% static "images/"|add:device.status|add:".gif" %}" /> Text Status</dd>
+				<dt>Device Group:</dt>
+				<dd><a href="{% url 'system:device_group_detail' device.device_group.id %}">{{ device.device_group.name }}</a></dd>
+			</dl>
+			<button class="btn btn-primary" role="button" id="system-device-test" data-href="{%url 'system:device_test' device.id %}">{% bootstrap_icon "log-in" %}&nbsp;Test Connection</button>
+			{#<a href="{% url 'system:device_test' device.id %}" class="btn btn-primary" role="button">{% bootstrap_icon "log-in" %}&nbsp;Test Connection</a>#}
+		</div>
+	</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,7 @@
+Django>=1.9.4
+django-bootstrap3>=7.0.0
+PyYAML
+bigsuds>=1.0.3
+netaddr
+django-debug-toolbar
+

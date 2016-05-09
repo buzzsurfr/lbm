@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load staticfiles %}
+
+<h1>{{ pool.name }} <small>Pool</small></h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<div class="panel panel-default">
+	<div class="panel-heading" data-toggle="collapse" href="#pool-properties-panel-body" aria-expanded="false" aria-controls="pool-properties-panel-body">
+		<h3 class="panel-title">Properties</h3>
+	</div>
+	<div class="panel-collapse collapse in" id="pool-properties-panel-body">
+		<div class="panel-body">
+			<dl class="dl-horizontal">
+				<dt>Name:</dt>
+				<dd>{{ pool.name }}</dd>
+				<dt>Device Group:</dt>
+				<dd>{{ pool.device_group.name }} &raquo; <img src="{% static "images/"|add:active_device.status|add:".gif" %}" /> {{ active_device.name }}</dd>
+				<dt>Partition / Path:</dt>
+				<dd>{{ pool.path }}</dd>
+				<dt>Method:</dt>
+				<dd><a href="#" data-toggle="tooltip" data-placement="right" title="{{ pool_lb_method_description }}">{{ pool_lb_method }}</a></dd>
+				<dt>Priority Group:</dt>
+				<dd>Disabled|Less than ## Available Member(s)</dd>
+				<dt>Availability:</dt>
+				<dd><img src="{% static "images/"|add:pool.state|add:".gif" %}" /></dd>
+				<dt>Monitors:</dt>
+				<dd>Requires all|at least ## Health Monitor(s)
+					<ul>
+						<li>standard-http-html</li>
+						<li>tcp</li>
+					</ul>
+				</dd>
+			</dl>
+			{% if member_count > 0 %}
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Members</h3>
+				</div>
+				<table class="table table-striped table-hover table-condensed">
+					<tr>
+						<th>&nbsp;</th>
+						<th>Member</th>
+						<th>Node Name</th>
+						<th>Ratio</th>
+						<th>Priority Group</th>
+						{# if monitor count > 1 #}<th>Monitors</th>
+					</tr>
+					{% for member in members %}
+					<tr>
+						<td class="text-right" width="1%"><img src="{% static "images/"|add:member.state|add:".gif" %}" /></td>
+						<td>{{ member.node.address }}:{{ member.port }}</td>
+						<td><a href="{% url 'ltm:node_detail' member.node.id %}">{{ member.node.name }}</a></td>
+						<td>1</td>
+						<td>0</td>
+						{# if monitor count > 1 #}<td>
+							<img src="{% static "images/status_circle_green.gif" %}" alt="standard-http-html"/>
+							<img src="{% static "images/status_diamond_red.gif" %}" alt="tcp"/>
+						</td>
+					</tr>
+					{% endfor %}
+				</table>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock content %}

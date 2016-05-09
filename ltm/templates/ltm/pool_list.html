@@ -1,0 +1,36 @@
+{% load bootstrap3 %}
+{% load staticfiles %}
+	<div class="panel panel-default">
+		<div class="panel-heading"><h3 class="panel-title">Pools</h3></div>
+		{% if pools %}
+		<table class="table table-striped table-hover table-condensed">
+			<thead>
+				<tr>
+					<th>&nbsp;</th>
+					<th>Name</th>
+					<th>Method</th>
+					<th>Monitors</th>
+					<th>Members</th>
+					<th>Device Group</th>
+				<tr>
+			</thead>
+			<tbody>
+			{% for pool in pools %}
+				<tr class="table-row-clickable" data-href="{% url 'ltm:pool_detail' pool.id %}">
+					<td class="text-right" width="1%"><img src="{% static "images/"|add:pool.state|add:".gif" %}" /></td>
+					<td>{{ pool.name }}</td>
+					<td>{{ pool.method }}</td>
+					<td>{{ pool.monitor_count }}</td>
+					<td>{{ pool.member_count }}</td>
+					<td>{{ pool.device_group }}</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+		<div class="panel-body">
+			{% bootstrap_pagination pools %}
+		</div>
+		{% else %}
+		<div class="panel-body"><p>No pools found.</p></div>
+		{% endif %}
+	</div>

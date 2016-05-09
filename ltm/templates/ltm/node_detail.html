@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load staticfiles %}
+
+<h1>{{ node.name }} <small>Node</small></h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<div class="panel panel-default">
+	<div class="panel-heading" data-toggle="collapse" href="#node-properties-panel-body" aria-expanded="false" aria-controls="node-properties-panel-body">
+		<h3 class="panel-title">Properties</h3>
+	</div>
+	<div class="panel-collapse collapse in" id="node-properties-panel-body">
+		<div class="panel-body">
+			<dl class="dl-horizontal">
+				<dt>Name:</dt>
+				<dd>{{ node.name }}</dd>
+				<dt>Device Group:</dt>
+				<dd>{{ node.device_group.name }} &raquo; <img src="{% static "images/"|add:active_device.status|add:".gif" %}" /> {{ active_device.name }}</dd>
+				<dt>Partition / Path:</dt>
+				<dd>{{ node.path }}</dd>
+				<dt>Address:</dt>
+				<dd>{{ node.address }}</dd>
+				<dt>Availability:</dt>
+				<dd><img src="{% static "images/"|add:node.state|add:".gif" %}" /></dd>
+			</dl>
+		</div>
+	</div>
+</div>
+{% endblock content %}

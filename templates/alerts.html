@@ -1,0 +1,4 @@
+{% load bootstrap3 %}
+		{% for alert in alerts %}
+		{% bootstrap_alert alert.content alert_type=alert.alert_type dismissable=True %}
+		{% endfor %}

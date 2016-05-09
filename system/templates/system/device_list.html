@@ -1,0 +1,32 @@
+{% load staticfiles %}
+	<div class="panel panel-default">
+		<div class="panel-heading"><h3 class="panel-title">Devices</h3></div>
+		{% if device_list %}
+		<table class="table table-striped table-hover table-condensed">
+			<thead>
+				<tr>
+					<th>&nbsp;</th>
+					<th>Name</th>
+					<th>Classification</th>
+					<th>Connection</th>
+					<th>Version</th>
+					<th>Device Group</th>
+				<tr>
+			</thead>
+			<tbody>
+			{% for device in device_list %}
+				<tr class="table-row-clickable" data-href="{% url 'system:device_detail' device.id %}">
+					<td class="text-right" width="1%"><img src="{% static "images/"|add:device.status|add:".gif" %}" /></td>
+					<td>{{ device.name }}</td>
+					<td>{{ device.classification }}</td>
+					<td>{{ device.connection }}</td>
+					<td>{{ device.version }}</td>
+					<td>{{ device.device_group.name }}</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+		{% else %}
+		<div class="panel-body"><p>No device groups found.</p></div>
+		{% endif %}
+	</div>
