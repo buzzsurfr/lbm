@@ -1,3 +1,4 @@
+sudo: true
 language: python
 python:
   - "2.7"
@@ -6,9 +7,9 @@ env:
   - DJANGO_VERSION=1.9.5
 # command to install dependencies
 install:
-  - pip install --user -q Django==$DJANGO_VERSION
+  - pip install -q Django==$DJANGO_VERSION
 #  - python setup.py -q install
-  - pip install --user -r requirements.txt
+  - pip install -r requirements.txt
 
 before_script:
   - python manage.py migrate
