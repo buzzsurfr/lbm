@@ -1,8 +1,12 @@
 # lbm
 Load Balancing Manager
 
-Language: Python  
-Framework: Django
+![language](https://img.shields.io/badge/language-python-yellow.svg)
+![framework](https://img.shields.io/badge/framework-django-green.svg)
+[![downloads](https://img.shields.io/github/downloads/buzzsurfr/lbm/total.svg?maxAge=2592000)](https://github.com/buzzsurfr/lbm.git)
+[![release](https://img.shields.io/github/release/buzzsurfr/lbm.svg?maxAge=2592000)](https://github.com/buzzsurfr/lbm/releases)
+[![issues](https://img.shields.io/github/issues-raw/buzzsurfr/lbm.svg?maxAge=2592000)](https://github.com/buzzsurfr/lbm/issues)
+[![license](https://img.shields.io/github/license/buzzsurfr/lbm.svg?maxAge=2592000)](https://github.com/buzzsurfr/lbm/blob/master/LICENSE)
 
 A simple aggregator of objects from load balancing instances (currently only F5).  Data is collected using [F5 iControl API](https://devcentral.f5.com/wiki/iControl.HomePage.ashx) with the [bigsuds](https://pypi.python.org/pypi/bigsuds/) python wrapper.
 
