@@ -7,7 +7,7 @@ Load Balancing Manager
 [![release](https://img.shields.io/github/release/buzzsurfr/lbm.svg?maxAge=2592000)](https://github.com/buzzsurfr/lbm/releases)
 [![issues](https://img.shields.io/github/issues-raw/buzzsurfr/lbm.svg?maxAge=2592000)](https://github.com/buzzsurfr/lbm/issues)
 [![license](https://img.shields.io/github/license/buzzsurfr/lbm.svg?maxAge=2592000)](https://github.com/buzzsurfr/lbm/blob/master/LICENSE)
-[![Travis](https://img.shields.io/travis/buzzsurfr/lbm.svg?maxAge=2592000)](https://travis-ci.org/buzzsurfr/lbm)
+[![Travis](https://api.travis-ci.org/buzzsurfr/lbm.svg)](https://travis-ci.org/buzzsurfr/lbm)
 
 A simple aggregator of objects from load balancing instances (currently only F5).  Data is collected using [F5 iControl API](https://devcentral.f5.com/wiki/iControl.HomePage.ashx) with the [bigsuds](https://pypi.python.org/pypi/bigsuds/) python wrapper.
 
