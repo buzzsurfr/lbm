@@ -1,50 +1,47 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load staticfiles %}
-{#{% include 'ltm/virtualserver_list.html' %}#}
-{#{% include 'ltm/pool_list.html' %}#}
-{#{% include 'ltm/node_list.html' %}#}
-	<div class="panel panel-default">
-		<div class="panel-heading"><h3 class="panel-title">Statistics</h3></div>
-		<table class="table table-striped table-hover table-condensed">
-			<thead>
-				<tr>
-					<th>Type</th>
-					<th>Total</th>
-					<th><img style="vertical-align: baseline;" src="{% static "images/status_circle_green.gif" %}" /> Available</th>
-					<th><img style="vertical-align: baseline;" src="{% static "images/status_triangle_yellow.gif" %}" /> Unavailable</th>
-					<th><img style="vertical-align: baseline;" src="{% static "images/status_diamond_red.gif" %}" /> Offline</th>
-					<th><img style="vertical-align: baseline;" src="{% static "images/status_square_blue.gif" %}" /> Unknown</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>Virtual Servers</td>
-					<td>{{ virtual_server_stats.total }}</td>
-					<td>{{ virtual_server_stats.AVAILABILITY_STATUS_GREEN }}</td>
-					<td>{{ virtual_server_stats.AVAILABILITY_STATUS_YELLOW }}</td>
-					<td>{{ virtual_server_stats.AVAILABILITY_STATUS_RED }}</td>
-					<td>{{ virtual_server_stats.AVAILABILITY_STATUS_BLUE }}</td>
-				</tr>
-				<tr>
-					<td>Pools</td>
-					<td>{{ pool_stats.total }}</td>
-					<td>{{ pool_stats.AVAILABILITY_STATUS_GREEN }}</td>
-					<td>{{ pool_stats.AVAILABILITY_STATUS_YELLOW }}</td>
-					<td>{{ pool_stats.AVAILABILITY_STATUS_RED }}</td>
-					<td>{{ pool_stats.AVAILABILITY_STATUS_BLUE }}</td>
-				</tr>
-				<tr>
-					<td>Nodes</td>
-					<td>{{ node_stats.total }}</td>
-					<td>{{ node_stats.AVAILABILITY_STATUS_GREEN }}</td>
-					<td>{{ node_stats.AVAILABILITY_STATUS_YELLOW }}</td>
-					<td>{{ node_stats.AVAILABILITY_STATUS_RED }}</td>
-					<td>{{ node_stats.AVAILABILITY_STATUS_BLUE }}</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-			
+<div class="panel panel-default">
+	<div class="panel-heading"><h3 class="panel-title">Statistics</h3></div>
+	<table class="table table-striped table-hover table-condensed">
+		<thead>
+			<tr>
+				<th>Type</th>
+				<th>Total</th>
+				<th><span class="glyphicon glyphicon-ok-sign" style="color: #3c763d;" aria-hidden="true"></span> Available</th>
+				<th><span class="glyphicon glyphicon-exclamation-sign" style="color: #8a6d3b;" aria-hidden="true"></span> Unavailable</th>
+				<th><span class="glyphicon glyphicon-remove-sign" style="color: #a94442;" aria-hidden="true"></span> Offline</th>
+				<th><span class="glyphicon glyphicon-question-sign" style="color: #31708f;" aria-hidden="true"></span> Unknown</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Virtual Servers</td>
+				<td><span class="badge">{{ virtual_server_stats.total }}</span></td>
+				<td><span class="badge" style="color: #dff0d8; background-color: #3c763d;">{{ virtual_server_stats.AVAILABILITY_STATUS_GREEN }}</span></td>
+				<td><span class="badge" style="color: #fcf8e3; background-color: #8a6d3b;">{{ virtual_server_stats.AVAILABILITY_STATUS_YELLOW }}</span></td>
+				<td><span class="badge" style="color: #f2dede; background-color: #a94442;">{{ virtual_server_stats.AVAILABILITY_STATUS_RED }}</span></td>
+				<td><span class="badge" style="color: #d9edf7; background-color: #31708f;">{{ virtual_server_stats.AVAILABILITY_STATUS_BLUE }}</span></td>
+			</tr>
+			<tr>
+				<td>Pools</td>
+				<td><span class="badge">{{ pool_stats.total }}</span></td>
+				<td><span class="badge" style="color: #dff0d8; background-color: #3c763d;">{{ pool_stats.AVAILABILITY_STATUS_GREEN }}</span></td>
+				<td><span class="badge" style="color: #fcf8e3; background-color: #8a6d3b;">{{ pool_stats.AVAILABILITY_STATUS_YELLOW }}</span></td>
+				<td><span class="badge" style="color: #f2dede; background-color: #a94442;">{{ pool_stats.AVAILABILITY_STATUS_RED }}</span></td>
+				<td><span class="badge" style="color: #d9edf7; background-color: #31708f;">{{ pool_stats.AVAILABILITY_STATUS_BLUE }}</span></td>
+			</tr>
+			<tr>
+				<td>Nodes</td>
+				<td><span class="badge">{{ node_stats.total }}</span></td>
+				<td><span class="badge" style="color: #dff0d8; background-color: #3c763d;">{{ node_stats.AVAILABILITY_STATUS_GREEN }}</span></td>
+				<td><span class="badge" style="color: #fcf8e3; background-color: #8a6d3b;">{{ node_stats.AVAILABILITY_STATUS_YELLOW }}</span></td>
+				<td><span class="badge" style="color: #f2dede; background-color: #a94442;">{{ node_stats.AVAILABILITY_STATUS_RED }}</span></td>
+				<td><span class="badge" style="color: #d9edf7; background-color: #31708f;">{{ node_stats.AVAILABILITY_STATUS_BLUE }}</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
 
 {% endblock content %}
