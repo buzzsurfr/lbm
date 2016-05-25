@@ -8,14 +8,14 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Load Balancing Object Viewer</title>
+		<title>Load Balancing Manager</title>
 		{% bootstrap_css %}
 		<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
 		{% bootstrap_javascript jquery=1 %}
 		<script src="{% static 'scripts/table-row-clickable.js' %}"></script>
 		<script src="{% static 'scripts/tooltips.js' %}"></script>
 	</head>
-	
+
 	<body>
 		{% include 'navbar.html' %}
 		<div class="container" id="alerts">
@@ -29,4 +29,3 @@
 		{#<pre>{% filter force_escape %}{% debug %}{% endfilter %}</pre>#}
 	</body>
 </html>
-
